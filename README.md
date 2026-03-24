@@ -28,6 +28,8 @@ El color principal debe ser un morado pastel (hexadecimal 0xFFD1C4E9 para fondos
 Los bordes de las tarjetas deben ser redondeados (borderRadius: 20) y tener una sombra muy sutil.
 
 Calidad del código: Asegúrate de usar const donde sea posible, manejar errores de carga de imagen con errorBuilder y que el childAspectRatio permita ver todo el texto sin errores de overflow.
+
+
 <img width="410" height="690" alt="image" src="https://github.com/user-attachments/assets/2f79960d-ea80-4f67-b8b1-53bf5269e5b8" />
 <img width="416" height="688" alt="image" src="https://github.com/user-attachments/assets/ce61abe5-a0bf-4633-8265-18b077cfbe89" />
 <img width="426" height="708" alt="image" src="https://github.com/user-attachments/assets/395c663a-1a92-4338-8ef5-72fb29120170" />
