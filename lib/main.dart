@@ -1,122 +1,157 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const PChopApp());
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class PChopApp extends StatelessWidget {
+  const PChopApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        primarySwatch: Colors.purple,
+        // Fondo lavanda pastel muy suave
+        scaffoldBackgroundColor: const Color(0xFFF8F4FF), 
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const ProductGridScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+class ProductGridScreen extends StatelessWidget {
+  const ProductGridScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    // LISTA DE 14 PRODUCTOS CON LINKS INDEPENDIENTES
+    // Reemplaza las URLs por tus links de GitHub (formato raw)
+    final List<Map<String, String>> products = [
+      {'name': 'Laptop Pro X', 'sub': 'Procesador i9', 'url': 'https://raw.githubusercontent.com/Adrian-Hazael-hdz/Imagenes-para-flutter-IAM-6to-I-fecha-11-feb-026/refs/heads/main/laptop.jpg'},
+      {'name': 'Mouse RGB', 'sub': 'Sensor Óptico', 'url': 'https://raw.githubusercontent.com/Adrian-Hazael-hdz/Imagenes-para-flutter-IAM-6to-I-fecha-11-feb-026/refs/heads/main/producto2.jpg'},
+      {'name': 'Teclado Mecánico', 'sub': 'Switch Brown', 'url': 'https://raw.githubusercontent.com/Adrian-Hazael-hdz/Imagenes-para-flutter-IAM-6to-I-fecha-11-feb-026/refs/heads/main/producto4.jpg'},
+      {'name': 'Monitor 4K', 'sub': '144Hz IPS', 'url': 'https://raw.githubusercontent.com/Adrian-Hazael-hdz/Imagenes-para-flutter-IAM-6to-I-fecha-11-feb-026/refs/heads/main/producto6.jpg'},
+      {'name': 'Audífonos Pro', 'sub': 'Noise Cancelling', 'url': 'https://raw.githubusercontent.com/Adrian-Hazael-hdz/Imagenes-para-flutter-IAM-6to-I-fecha-11-feb-026/refs/heads/main/producto5.jpg'},
+      {'name': 'Webcam HD', 'sub': '1080p 60fps', 'url': 'https://raw.githubusercontent.com/Adrian-Hazael-hdz/Imagenes-para-flutter-IAM-6to-I-fecha-11-feb-026/refs/heads/main/webcam.jpg'},
+      {'name': 'Silla Gamer', 'sub': 'Ergonómica Pastel', 'url': 'https://raw.githubusercontent.com/Adrian-Hazael-hdz/Imagenes-para-flutter-IAM-6to-I-fecha-11-feb-026/refs/heads/main/silla.jpg'},
+      {'name': 'Micrófono USB', 'sub': 'Calidad Estudio', 'url': 'https://raw.githubusercontent.com/Adrian-Hazael-hdz/Imagenes-para-flutter-IAM-6to-I-fecha-11-feb-026/refs/heads/main/microfono.jpg'},
+      {'name': 'Gabinete ATX', 'sub': 'Cristal Templado', 'url': 'https://raw.githubusercontent.com/Adrian-Hazael-hdz/Imagenes-para-flutter-IAM-6to-I-fecha-11-feb-026/refs/heads/main/gabinete.jpg'},
+      {'name': 'Tarjeta Video', 'sub': 'RTX Edition', 'url': 'https://raw.githubusercontent.com/Adrian-Hazael-hdz/Imagenes-para-flutter-IAM-6to-I-fecha-11-feb-026/refs/heads/main/tarjeta.jpg'},
+      {'name': 'Memoria RAM', 'sub': '16GB DDR5', 'url': 'https://raw.githubusercontent.com/Adrian-Hazael-hdz/Imagenes-para-flutter-IAM-6to-I-fecha-11-feb-026/refs/heads/main/ram.jpg'},
+      {'name': 'Disco SSD', 'sub': '1TB NVMe', 'url': 'https://raw.githubusercontent.com/Adrian-Hazael-hdz/Imagenes-para-flutter-IAM-6to-I-fecha-11-feb-026/refs/heads/main/ssd.jpg'},
+      {'name': 'Pad Mouse XL', 'sub': 'Superficie Speed', 'url': 'https://raw.githubusercontent.com/Adrian-Hazael-hdz/Imagenes-para-flutter-IAM-6to-I-fecha-11-feb-026/refs/heads/main/mousepad.jpg'},
+      {'name': 'Enfriamiento', 'sub': 'Líquido RGB', 'url': 'https://raw.githubusercontent.com/Adrian-Hazael-hdz/Imagenes-para-flutter-IAM-6to-I-fecha-11-feb-026/refs/heads/main/enfriamiento.jpg'},
+    ];
+
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: const Text('PChop Electronics', 
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+        centerTitle: true,
+        backgroundColor: const Color(0xFFD1C4E9), // Morado pastel principal
+        elevation: 2,
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+      body: GridView.builder(
+        padding: const EdgeInsets.all(12),
+        // Configuración: 2 columnas, 7 filas (automático por el itemCount de 14)
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2, 
+          crossAxisSpacing: 12,
+          mainAxisSpacing: 12,
+          childAspectRatio: 0.7, // Proporción estirada para las 3 filas inferiores
         ),
+        itemCount: products.length,
+        itemBuilder: (context, index) {
+          return ProductCard(
+            title: products[index]['name']!,
+            subtitle: products[index]['sub']!,
+            imageUrl: products[index]['url']!,
+          );
+        },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class ProductCard extends StatelessWidget {
+  final String title;
+  final String subtitle;
+  final String imageUrl;
+
+  const ProductCard({
+    super.key,
+    required this.title,
+    required this.subtitle,
+    required this.imageUrl,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: const Color(0xFFE1BEE7), width: 1), // Borde morado pastel
+      ),
+      child: Column(
+        children: [
+          // Espacio para la imagen
+          Expanded(
+            flex: 3,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+              child: Image.network(
+                imageUrl,
+                fit: BoxFit.cover,
+                width: double.infinity,
+                // Si el link falla, muestra un color pastel de respaldo
+                errorBuilder: (context, error, stackTrace) => 
+                  Container(color: const Color(0xFFF3E5F5), child: const Icon(Icons.computer, color: Colors.purple)),
+              ),
+            ),
+          ),
+          
+          // PARTE INFERIOR (3 filas de información)
+          Expanded(
+            flex: 2,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Fila 1: Título
+                  Text(
+                    title,
+                    style: const TextStyle(
+  fontWeight: FontWeight.bold, 
+  fontSize: 15, 
+  color: Color(0xFF7B1FA2), // Cambiado de 0Box a 0xFF
+),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  // Fila 2: Subtítulo
+                  Text(
+                    subtitle,
+                    style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                  ),
+                  // Fila 3: Estrellitas
+                  const Row(
+                    children: [
+                      Icon(Icons.star, size: 14, color: Color(0xFFFFD54F)),
+                      Icon(Icons.star, size: 14, color: Color(0xFFFFD54F)),
+                      Icon(Icons.star, size: 14, color: Color(0xFFFFD54F)),
+                      Icon(Icons.star, size: 14, color: Color(0xFFFFD54F)),
+                      Icon(Icons.star_half, size: 14, color: Color(0xFFFFD54F)),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
